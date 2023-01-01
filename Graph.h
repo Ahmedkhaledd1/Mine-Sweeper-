@@ -61,7 +61,6 @@ public:
 	bool getExplore(int index);
 	void explore(int index);
 	void exploreNodeAdj(int index);
-	void firstClick(int index);
 	void explore(Node* ptr);
 	int getFirstZero();
 private:
