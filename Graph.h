@@ -45,8 +45,6 @@ public:
 	//void addEdge(int index1, int index2);
 	//traverse all nodes of the graph
 	void traverse();
-	//initialize node by providing the index of the node and the value.
-	void initializeNode(int index, short value);
 	//traverse adjacent list of given index of node.
 	void traverseNodeAdj(int index);
 	//check if this node is a bomb.
@@ -64,33 +62,8 @@ public:
 	void explore(int index);
 	void exploreNodeAdj(int index);
 	void firstClick(int index);
-	void setNotExp(int index);
 	void explore(Node* ptr);
 	int getFirstZero();
 private:
 	int rem;
 };
-
-/*
-
-*/
-
-/*
-class Node{
-	public:
-		Node(short v=-1,bool b=false) {
-			value = v;
-			bomb = b;
-			explored = false;
-			adjList = new list<Node*>;
-		}
-		//value indicating number of bombs around this node
-		short value;
-		//boolean indicating if this node is a bomb.
-		bool bomb;
-		//explored boolean to clarify if node visited or not
-		bool explored;
-	//adjacent list for every vertix to point to adjacent virtices
-		list<Node*>* adjList;
-	};
-*/
