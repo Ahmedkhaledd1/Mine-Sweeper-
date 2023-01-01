@@ -18,14 +18,6 @@ Graph::~Graph() {
 	delete(myN);
 
 }
-/*
-void Graph::addEdge(int index1, int index2) {
-	Node* n1 = myN->at(index1);
-	Node* n2 = myN->at(index2);
-	n1->adjList->push_back(n2);
-	n2->adjList->push_back(n1);
-}
-*/
 void Graph::connectNodes() {
 	int i = 0;
 	for (std::vector<Node*>::iterator it = myN->begin(); it != myN->end(); it++, i++) {
@@ -48,17 +40,11 @@ void Graph::traverse() {
 	}
 }
 
-void Graph::initializeNode(int index, short value) {
-	myN->at(index)->value = value;
-}
 int Graph::getNodeValue(int index) {
 	return myN->at(index)->value;
 }
 int Graph::getRem() {
 	return rem;
-}
-void Graph::setNotExp(int index) {
-	myN->at(index)->explored = false;
 }
 void Graph::explore(Node* ptr) {
 	if (ptr->explored)return;
@@ -86,21 +72,11 @@ void Graph::exploreNodeAdj(int index) {
 bool Graph::getExplore(int index) {
 	return myN->at(index)->explored;
 }
-void Graph::traverseNodeAdj(int index) {
-	Node* ptr = myN->at(index);
-	ptr->top->value;
-	ptr->right->value;
-	ptr->bot->value;
-	ptr->left->value;
-}
-
 
 bool Graph::checkBomb(int index) {
 	return myN->at(index)->bomb;
 }
-
-
-
+//random function for initializing mines and shuffling them.
 int myrandom(int i) { return std::rand() % i; }
 void Graph::initializeBombs(int n) {
 	rem = (rows * columns) - n;
@@ -120,29 +96,6 @@ void Graph::initializeBombs(int n) {
 		Node* ptr = *it;
 		if (v->at(c) == -5)ptr->bomb = true;
 	}
-	/*
-	int c = 1;
-	while (x != 0) {
-		int r;
-		for (std::vector<Node*>::iterator it = myN->begin(); it != myN->end(); it++,c++) {
-			if (x == 0)return;
-			Node* ptr = *it;
-			if (ptr->bomb)continue;
-			srand((5*x+2*c));
-			r = rand() % 100;
-			std::cout << r << " ";
-			if ( r < 40) {
-				ptr->bomb = true;
-				x--;
-			}
-		}
-	}
-	*/
-	/*
-	if (x != 0) {
-		initializeBombs(x);
-	}
-	*/
 }
 
 void Graph::initializeNodes() {
@@ -175,11 +128,6 @@ void Graph::explore(int index) {
 	if (ptr->explored)return;
 	ptr->explored = true;
 	rem--;
-	/*
-	if (ptr->value == 0) {
-		exploreNodeAdj(ptr);
-	}
-	*/
 }
 int Graph::getFirstZero() {
 	int i = 0;
@@ -188,16 +136,5 @@ int Graph::getFirstZero() {
 		if (ptr->value == 0) {
 			return i+1;
 		}
-	}
-}
-void Graph::firstClick(int index) {
-	Node* ptr = myN->at(index);
-	if (ptr->bomb) {
-		ptr->bomb = false;
-		initializeBombs(1);
-		initializeNodes();
-	}
-	else {
-		explore(index);
 	}
 }
