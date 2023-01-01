@@ -1,5 +1,6 @@
 C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.vcxproj.AssemblyReference.cache
-C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.exe
 C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.MyForm.resources
-C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.vcxproj.GenerateResource.cache
 C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.MyForm1.resources
+C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.MyForm2.resources
+C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.vcxproj.GenerateResource.cache
+C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.exe

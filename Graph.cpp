@@ -1,5 +1,5 @@
 #include "Graph.h"
-
+#include <algorithm>
 //using namespace std;
 
 Graph::Graph(int r, int c) {
@@ -38,10 +38,13 @@ void Graph::connectNodes() {
 	}
 }
 void Graph::traverse() {
-	for (std::vector<Node*>::iterator it1 = myN->begin(); it1 != myN->end(); it1++) {
-		if ((*it1)->explored)continue;
-		std::cout << (*it1)->value << " ";
-		(*it1)->explored = true;
+	int i = 1;
+	for (std::vector<Node*>::iterator it1 = myN->begin(); it1 != myN->end(); it1++, i++) {
+		//if ((*it1)->explored)continue;
+		if ((*it1)->bomb)std::cout << "X" << "    ";
+		else std::cout << (*it1)->value << "    ";
+		//(*it1)->explored = true;
+		if (i % 8 == 0)std::cout << std::endl;
 	}
 }
 
@@ -51,18 +54,38 @@ void Graph::initializeNode(int index, short value) {
 int Graph::getNodeValue(int index) {
 	return myN->at(index)->value;
 }
-
-void Graph::exploreNodeAdj(Node* ptr) {
-	ptr->top->explored = true;
-	ptr->right->explored = true;
-	ptr->bot->explored = true;
-	ptr->left->explored = true;
-	ptr->top->left->explored = true;
-	ptr->top->right->explored = true;
-	ptr->bot->left->explored = true;
-	ptr->bot->right->explored = true;
+int Graph::getRem() {
+	return rem;
 }
+void Graph::setNotExp(int index) {
+	myN->at(index)->explored = false;
+}
+void Graph::explore(Node* ptr) {
+	if (ptr->explored)return;
+	ptr->explored = true;
+	rem--;
+}
+void Graph::exploreNodeAdj(int index) {
+	Node* ptr = myN->at(index);
+	if (ptr->top != NULL) {
+		explore(ptr->top);
+		if (ptr->top->left != NULL)explore(ptr->top->left);
+	if (ptr->top->right != NULL)explore(ptr->top->right);
 
+	}
+	if (ptr->bot != NULL) {
+		explore(ptr->bot);
+		if(ptr->bot->right != NULL)explore(ptr->bot->right);
+		if(ptr->bot->left != NULL)explore(ptr->bot->left);
+
+	}
+	if (ptr->right != NULL)explore(ptr->right);
+	if (ptr->left != NULL)explore(ptr->left);
+
+}
+bool Graph::getExplore(int index) {
+	return myN->at(index)->explored;
+}
 void Graph::traverseNodeAdj(int index) {
 	Node* ptr = myN->at(index);
 	ptr->top->value;
@@ -78,20 +101,43 @@ bool Graph::checkBomb(int index) {
 
 
 
+int myrandom(int i) { return std::rand() % i; }
 void Graph::initializeBombs(int n) {
+	rem = (rows * columns) - n;
+	std::srand(unsigned(std::time(0)));
+	std::vector<int>* v = new std::vector<int>;
 	int x = n;
+	while (x > 0) {
+		v->push_back(-5);
+		x--;
+	}
+	for (int i = n - 1; i < (rows * columns); i++) {
+		v->push_back(-1);
+	}
+	std::random_shuffle(v->begin(), v->end(), myrandom);
+	int c = 0;
+	for (std::vector<Node*>::iterator it = myN->begin(); it != myN->end(); it++, c++) {
+		Node* ptr = *it;
+		if (v->at(c) == -5)ptr->bomb = true;
+	}
+	/*
+	int c = 1;
 	while (x != 0) {
-		for (std::vector<Node*>::iterator it = myN->begin(); it != myN->end(); it++) {
+		int r;
+		for (std::vector<Node*>::iterator it = myN->begin(); it != myN->end(); it++,c++) {
 			if (x == 0)return;
 			Node* ptr = *it;
 			if (ptr->bomb)continue;
-			srand(time(0));
-			if (rand() % 100 < 30) {
+			srand((5*x+2*c));
+			r = rand() % 100;
+			std::cout << r << " ";
+			if ( r < 40) {
 				ptr->bomb = true;
 				x--;
 			}
 		}
 	}
+	*/
 	/*
 	if (x != 0) {
 		initializeBombs(x);
@@ -126,12 +172,24 @@ void Graph::initializeNodes() {
 
 void Graph::explore(int index) {
 	Node* ptr = myN->at(index);
+	if (ptr->explored)return;
 	ptr->explored = true;
+	rem--;
+	/*
 	if (ptr->value == 0) {
 		exploreNodeAdj(ptr);
 	}
+	*/
 }
-
+int Graph::getFirstZero() {
+	int i = 0;
+	for (auto it = myN->begin(); it != myN->end(); it++,i++) {
+		Node* ptr = *it;
+		if (ptr->value == 0) {
+			return i+1;
+		}
+	}
+}
 void Graph::firstClick(int index) {
 	Node* ptr = myN->at(index);
 	if (ptr->bomb) {

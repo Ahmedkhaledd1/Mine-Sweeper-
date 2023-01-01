@@ -1,6 +1,6 @@
 ﻿  MyForm.cpp
   MyForm1.cpp
-C:\Users\youss\source\repos\firstGUITrial\MyForm1.cpp(6,33): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  MyForm2.cpp
   Generating Code...
   Graph.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   firstGUITrial.vcxproj -> C:\Users\youss\source\repos\firstGUITrial\Debug\firstGUITrial.exe

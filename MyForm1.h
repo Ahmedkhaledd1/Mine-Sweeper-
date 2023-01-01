@@ -1,5 +1,6 @@
 #pragma once
 #include "MyForm.h"
+#include "MyForm2.h"
 namespace firstGUITrial {
 
 	using namespace System;
@@ -15,6 +16,7 @@ namespace firstGUITrial {
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
+
 		MyForm1(void)
 		{
 			InitializeComponent();
@@ -43,7 +45,7 @@ namespace firstGUITrial {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -63,9 +65,9 @@ namespace firstGUITrial {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.8F));
 			this->label1->Location = System::Drawing::Point(78, 45);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(307, 31);
+			this->label1->Size = System::Drawing::Size(316, 31);
 			this->label1->TabIndex = 66;
-			this->label1->Text = L"Welcom to Mine swipper";
+			this->label1->Text = L"Welcom to Mine sweeper";
 			this->label1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
 			// 
 			// button1
@@ -97,12 +99,13 @@ namespace firstGUITrial {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::DarkGray;
 			this->ClientSize = System::Drawing::Size(463, 267);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm1";
-			this->Text = L"MyForm1";
+			this->Text = L"Mine sweeper";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -112,13 +115,21 @@ namespace firstGUITrial {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Graph myg = Graph(8, 8);
-		myg.initializeBombs(20);
-		myg.connectNodes();
-		myg.initializeNodes();
 		this->Hide();
-		MyForm^ obj1 = gcnew MyForm(this, &myg);
-		obj1->ShowDialog();
+		MyForm2^ obj2 = gcnew  MyForm2(this);
+		obj2->ShowDialog();
+
+
+
+		/*	Graph myg = Graph(8, 8);
+			myg.initializeBombs(10);
+			myg.connectNodes();
+			myg.initializeNodes();
+			//myg.traverse();
+			this->Hide();
+			MyForm^ obj1 = gcnew MyForm(this, &myg);
+			obj1->ShowDialog();
+			*/
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();

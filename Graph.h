@@ -59,10 +59,16 @@ public:
 	void connectNodes();
 	//get the value of the node with passed index, will be used when node is clicked.
 	int getNodeValue(int index);
-
+	int getRem();
+	bool getExplore(int index);
 	void explore(int index);
-	void exploreNodeAdj(Node* ptr);
+	void exploreNodeAdj(int index);
 	void firstClick(int index);
+	void setNotExp(int index);
+	void explore(Node* ptr);
+	int getFirstZero();
+private:
+	int rem;
 };
 
 /*
