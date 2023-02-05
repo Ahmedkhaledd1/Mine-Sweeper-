@@ -39,7 +39,9 @@ This app is compatable with visual studio 2019 (some changes may be nedded in th
 
 ## contributors
 
+  <a href="https://github.com/xYoussefMahmoudx/Mine-Sweeper-/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=xYoussefMahmoudx/Mine-Sweeper-" />
+</a>
 
 
 
