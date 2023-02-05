@@ -36,3 +36,10 @@
 
 This app is compatable with visual studio 2019 (some changes may be nedded in the setup for other versions)
 
+
+## contributors
+
+  <img src="https://contrib.rocks/image?repo=xYoussefMahmoudx/Mine-Sweeper-" />
+
+
+
