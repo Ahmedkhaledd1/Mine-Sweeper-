@@ -121,15 +121,7 @@ namespace firstGUITrial {
 
 
 
-		/*	Graph myg = Graph(8, 8);
-			myg.initializeBombs(10);
-			myg.connectNodes();
-			myg.initializeNodes();
-			//myg.traverse();
-			this->Hide();
-			MyForm^ obj1 = gcnew MyForm(this, &myg);
-			obj1->ShowDialog();
-			*/
+		
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Application::Exit();
